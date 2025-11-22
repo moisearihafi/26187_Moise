@@ -1,35 +1,34 @@
-package _26187_.q5;
+package _26187_.q6;
 
-public class Customer extends Vehicle {
+public class Customer extends Account {
     private String customerName;
-    private String licenseNumber;
-    private String contactNumber;
+    private String email;
+    private String phoneNumber;
 
-    public Customer(long id, String createdDate, String updatedDate, String companyName, String address, String phoneNumber,
-                    String branchName, String locationCode,
-                    String vehicleType, String registrationNumber, double dailyRate,
-                    String customerName, String licenseNumber, String contactNumber) throws RentalDataException {
-        super(id, createdDate, updatedDate, companyName, address, phoneNumber, branchName, locationCode, vehicleType, registrationNumber, dailyRate);
+    public Customer(long id, String createdDate, String updatedDate, String bankName, String branchCode, String address,
+                    String accountNumber, String accountType, double balance,
+                    String customerName, String email, String phoneNumber) throws BankingDataException {
+        super(id, createdDate, updatedDate, bankName, branchCode, address, accountNumber, accountType, balance);
         setCustomerName(customerName);
-        setLicenseNumber(licenseNumber);
-        setContactNumber(contactNumber);
+        setEmail(email);
+        setPhoneNumber(phoneNumber);
     }
 
     public String getCustomerName() { return customerName; }
-    public void setCustomerName(String customerName) throws RentalDataException {
-        if (customerName == null || customerName.trim().isEmpty()) throw new RentalDataException("customerName must not be empty");
+    public void setCustomerName(String customerName) throws BankingDataException {
+        if (customerName == null || customerName.trim().isEmpty()) throw new BankingDataException("customerName must not be empty");
         this.customerName = customerName.trim();
     }
 
-    public String getLicenseNumber() { return licenseNumber; }
-    public void setLicenseNumber(String licenseNumber) throws RentalDataException {
-        if (licenseNumber == null || licenseNumber.trim().isEmpty()) throw new RentalDataException("licenseNumber must not be empty");
-        this.licenseNumber = licenseNumber.trim();
+    public String getEmail() { return email; }
+    public void setEmail(String email) throws BankingDataException {
+        if (email == null || !email.matches("^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$")) throw new BankingDataException("email invalid");
+        this.email = email;
     }
 
-    public String getContactNumber() { return contactNumber; }
-    public void setContactNumber(String contactNumber) throws RentalDataException {
-        if (contactNumber == null || !contactNumber.matches("\\d{10}")) throw new RentalDataException("contactNumber must be 10 digits");
-        this.contactNumber = contactNumber;
+    public String getPhoneNumber() { return phoneNumber; }
+    public void setPhoneNumber(String phoneNumber) throws BankingDataException {
+        if (phoneNumber == null || !phoneNumber.matches("\\d{10}")) throw new BankingDataException("phoneNumber must be 10 digits");
+        this.phoneNumber = phoneNumber;
     }
 }
