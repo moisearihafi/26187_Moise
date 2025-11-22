@@ -1,34 +1,23 @@
-package _26187_.q6;
+package _26187_.q10;
 
-public class Customer extends Account {
+public class Customer extends Product {
     private String customerName;
-    private String email;
-    private String phoneNumber;
+    private String contactNumber;
+    private String address;
 
-    public Customer(long id, String createdDate, String updatedDate, String bankName, String branchCode, String address,
-                    String accountNumber, String accountType, double balance,
-                    String customerName, String email, String phoneNumber) throws BankingDataException {
-        super(id, createdDate, updatedDate, bankName, branchCode, address, accountNumber, accountType, balance);
+    public Customer(long id, String createdDate, String updatedDate, String storeName, String addressStore, String email, String categoryName, String categoryCode, String productName, String productCode, double price, String customerName, String contactNumber, String address) throws OnlineShoppingDataException {
+        super(id, createdDate, updatedDate, storeName, addressStore, email, categoryName, categoryCode, productName, productCode, price);
         setCustomerName(customerName);
-        setEmail(email);
-        setPhoneNumber(phoneNumber);
+        setContactNumber(contactNumber);
+        setAddress(address);
     }
 
     public String getCustomerName() { return customerName; }
-    public void setCustomerName(String customerName) throws BankingDataException {
-        if (customerName == null || customerName.trim().isEmpty()) throw new BankingDataException("customerName must not be empty");
-        this.customerName = customerName.trim();
-    }
+    public void setCustomerName(String customerName) throws OnlineShoppingDataException { if (customerName == null || customerName.trim().isEmpty()) throw new OnlineShoppingDataException("customerName must not be empty"); this.customerName = customerName.trim(); }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) throws BankingDataException {
-        if (email == null || !email.matches("^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$")) throw new BankingDataException("email invalid");
-        this.email = email;
-    }
+    public String getContactNumber() { return contactNumber; }
+    public void setContactNumber(String contactNumber) throws OnlineShoppingDataException { if (contactNumber == null || contactNumber.trim().isEmpty()) throw new OnlineShoppingDataException("contactNumber must not be empty"); this.contactNumber = contactNumber.trim(); }
 
-    public String getPhoneNumber() { return phoneNumber; }
-    public void setPhoneNumber(String phoneNumber) throws BankingDataException {
-        if (phoneNumber == null || !phoneNumber.matches("\\d{10}")) throw new BankingDataException("phoneNumber must be 10 digits");
-        this.phoneNumber = phoneNumber;
-    }
+    public String getAddress() { return address; }
+    public void setAddress(String address) throws OnlineShoppingDataException { if (address == null || address.trim().isEmpty()) throw new OnlineShoppingDataException("address must not be empty"); this.address = address.trim(); }
 }

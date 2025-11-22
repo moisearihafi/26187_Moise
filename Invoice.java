@@ -1,14 +1,14 @@
-package _26187_.q9;
+package _26187_.q10;
 
-public class Invoice extends Payment {
-    private double totalFare;
+public class Invoice extends Shipping {
+    private double totalAmount;
 
-    public Invoice(long id, String createdDate, String updatedDate, String airlineName, String address, String contactEmail, String flightNumber, String destination, String departureTime, String passengerName, String passportNumber, String nationality, String seatNumber, String seatType, String ticketNumber, double price, double baggageWeight, double baggageFee, String paymentDate, String paymentMode) throws AirlineDataException {
-        super(id, createdDate, updatedDate, airlineName, address, contactEmail, flightNumber, destination, departureTime, passengerName, passportNumber, nationality, seatNumber, seatType, ticketNumber, price, baggageWeight, baggageFee, paymentDate, paymentMode);
-        calculateTotalFare();
+    public Invoice(long id, String createdDate, String updatedDate, String storeName, String addressStore, String email, String categoryName, String categoryCode, String productName, String productCode, double price, String customerName, String contactNumber, String address, String orderDate, String orderId, String paymentMethod, String paymentStatus, String shippingAddress, double shippingCost) throws OnlineShoppingDataException {
+        super(id, createdDate, updatedDate, storeName, addressStore, email, categoryName, categoryCode, productName, productCode, price, customerName, contactNumber, address, orderDate, orderId, paymentMethod, paymentStatus, shippingAddress, shippingCost);
+        calculateTotalAmount();
     }
 
-    public double getTotalFare() { return totalFare; }
+    public double getTotalAmount() { return totalAmount; }
 
-    public void calculateTotalFare() { this.totalFare = getPrice() + getBaggageFee(); }
+    public void calculateTotalAmount() { this.totalAmount = getPrice() + getShippingCost(); }
 }
