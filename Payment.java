@@ -1,31 +1,30 @@
-package _26187_.q6;
+package _26187_.q7;
 
-public class Payment extends Loan {
+public class Payment extends Agreement {
     private double paymentAmount;
     private String paymentDate;
 
-    public Payment(long id, String createdDate, String updatedDate, String bankName, String branchCode, String address,
-                   String accountNumber, String accountType, double balance,
-                   String customerName, String email, String phoneNumber,
-                   String transactionId, String transactionType, double amount,
-                   double depositAmount, String depositDate,
-                   double withdrawalAmount, String withdrawalDate,
-                   double loanAmount, double interestRate, int duration,
-                   double paymentAmount, String paymentDate) throws BankingDataException {
-        super(id, createdDate, updatedDate, bankName, branchCode, address, accountNumber, accountType, balance, customerName, email, phoneNumber, transactionId, transactionType, amount, depositAmount, depositDate, withdrawalAmount, withdrawalDate, loanAmount, interestRate, duration);
+    public Payment(long id, String createdDate, String updatedDate, String agencyName, String location, String phoneNumber,
+                   String agentName, String emailAgent, String licenseNumber,
+                   String propertyCode, String propertyType, double price,
+                   String sellerName, String contactNumber,
+                   String buyerName, String email,
+                   String agreementDate, String terms,
+                   double paymentAmount, String paymentDate) throws RealEstateDataException {
+        super(id, createdDate, updatedDate, agencyName, location, phoneNumber, agentName, emailAgent, licenseNumber, propertyCode, propertyType, price, sellerName, contactNumber, buyerName, email, agreementDate, terms);
         setPaymentAmount(paymentAmount);
         setPaymentDate(paymentDate);
     }
 
     public double getPaymentAmount() { return paymentAmount; }
-    public void setPaymentAmount(double paymentAmount) throws BankingDataException {
-        if (paymentAmount <= 0) throw new BankingDataException("paymentAmount must be > 0");
+    public void setPaymentAmount(double paymentAmount) throws RealEstateDataException {
+        if (paymentAmount <= 0) throw new RealEstateDataException("paymentAmount must be > 0");
         this.paymentAmount = paymentAmount;
     }
 
     public String getPaymentDate() { return paymentDate; }
-    public void setPaymentDate(String paymentDate) throws BankingDataException {
-        if (paymentDate == null || paymentDate.trim().isEmpty()) throw new BankingDataException("paymentDate must not be empty");
+    public void setPaymentDate(String paymentDate) throws RealEstateDataException {
+        if (paymentDate == null || paymentDate.trim().isEmpty()) throw new RealEstateDataException("paymentDate must not be empty");
         this.paymentDate = paymentDate.trim();
     }
 }
